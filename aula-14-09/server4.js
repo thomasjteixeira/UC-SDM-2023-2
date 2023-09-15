@@ -1,15 +1,12 @@
-const http = require("http");
-
-const express = require("express");
+import express from "express";
 const app = express();
+
 const PORT = 3000;
 
-app.set("port", PORT);
+// Utilizar o json para o body das requisições
 app.use(express.json());
 
-const server = http.createServer(app);
-
-server.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });
 
@@ -63,5 +60,5 @@ app.patch("/alunos/:id", (req, res) => {
   alunos[index] = { ...alunos[index], ...aluno };
 
   // retorna o status 200 - OK e o aluno atualizado
-  res.status(200).send(alunos[index]);
+  res.status(200).send(alunos);
 });
